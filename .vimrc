@@ -6,7 +6,6 @@ set mouse=a
 set autoread
 
 set clipboard+=unnamed  " use the clipboards of vim and win
-" set paste " Paste from a windows or from vim -- diables mappings
 set go+=a               " Visual selection automatically copied to the clipboard
 
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespaces on save
@@ -36,9 +35,6 @@ Plug 'https://github.com/bkad/CamelCaseMotion.git'
 Plug 'https://github.com/tmhedberg/matchit.git'
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/morhetz/gruvbox.git'
-" Plug 'https://github.com/rust-lang/rust.vim.git'
-" Plug 'https://github.com/derekwyatt/vim-scala.git'
-" Plug 'https://github.com/jonathanfilip/vim-lucius.git'
 " Plug 'https://github.com/LnL7/vim-nix.git'
 Plug 'https://github.com/jackiekircher/vim-chip8.git'
 " Plug 'https://github.com/airblade/vim-gitgutter.git'
@@ -47,8 +43,6 @@ Plug 'https://github.com/ziglang/zig.vim.git'
 " Plug 'https://github.com/davidhalter/jedi-vim.git'
 " Plug 'prabirshrestha/vim-lsp'
 " Plug 'mattn/vim-lsp-settings'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'https://github.com/inkarkat/vim-SpellCheck.git'
 call plug#end()
 
 
@@ -168,6 +162,7 @@ set softtabstop=2
 set shiftwidth=2
 set autoindent
 
+vnoremap <C-c> "*y
 set wildmenu
 set wildmode=longest:full,full
 set wildoptions=pum
