@@ -16,10 +16,13 @@ alias cl='clear'
 alias dockersudo='sudo usermod  -aG docker iria && newgrp docker'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 #
-alias diff="diff --color -y"
-# diff --color -y <(fold -s -w 20 preds_ankaa_beam.txt) <(fold -s -w 20 preds_v19_beam.txt)
-# functions
 
+# diff
+alias diff="diff --color -y"
 sidediff () {
 diff --color -y <(fold -s -w 20 $1) <(fold -s -w 20 $2)
 }
+
+# rsync
+# copy with progress bar
+alias cpv='rsync -ah --info=progress2'
