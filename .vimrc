@@ -26,6 +26,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'github/copilot.vim'
 Plug 'dense-analysis/ale'
+Plug 'vimwiki/vimwiki'
 " Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 "
@@ -35,14 +36,6 @@ Plug 'https://github.com/bkad/CamelCaseMotion.git'
 Plug 'https://github.com/tmhedberg/matchit.git'
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/morhetz/gruvbox.git'
-" Plug 'https://github.com/LnL7/vim-nix.git'
-Plug 'https://github.com/jackiekircher/vim-chip8.git'
-" Plug 'https://github.com/airblade/vim-gitgutter.git'
-Plug 'https://github.com/rhysd/vim-clang-format.git'
-Plug 'https://github.com/ziglang/zig.vim.git'
-" Plug 'https://github.com/davidhalter/jedi-vim.git'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'mattn/vim-lsp-settings'
 call plug#end()
 
 
