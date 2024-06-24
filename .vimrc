@@ -36,6 +36,7 @@ Plug 'https://github.com/bkad/CamelCaseMotion.git'
 Plug 'https://github.com/tmhedberg/matchit.git'
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/morhetz/gruvbox.git'
+" Plug 'https://github.com/airblade/vim-gitgutter.git'
 call plug#end()
 
 
@@ -57,6 +58,7 @@ let g:ale_python_pylsp_options = '--max-line-length=92'
 " will change things automatically
 let g:ale_fix_on_save = 0
 let g:ale_completion_enabled = 0
+let g:ale_hover_cursor = 1
 
 
 " Section: NERDTree
