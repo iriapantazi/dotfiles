@@ -160,7 +160,7 @@ set autoindent
 vnoremap <C-c> "*y
 set wildmenu
 set wildmode=longest:full,full
-set wildoptions=pum
+" set wildoptions=pum
 set wildignorecase " requireds to set ignorecase to fully work
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=*.class,*.pyc,*/node_modules/*,*.o
