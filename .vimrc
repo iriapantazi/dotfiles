@@ -78,6 +78,7 @@ nnoremap <leader>B :Buffers<CR>
 
 
 " Section: CtrlP
+let g:ctrlp_max_files=0 " no limit on files
 " let g:ctrlp_by_filename = 1
 " nnoremap <leader><C-p> :<C-u>CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
