@@ -8,6 +8,13 @@ alias lr="ls -ltr"
 alias l="ls -l"
 alias ll="ls -la"
 
+# tmux
+alias tmux="tmux -2"
+alias ta="tmux attach -t"
+alias tls="tmux ls"
+alias tnew="tmux new -s"
+alias tkill="tmux kill-session -t"
+
 # my aliases
 alias l='ls -l'
 alias ll='ls -la'
@@ -26,3 +33,4 @@ diff --color -y <(fold -s -w 20 $1) <(fold -s -w 20 $2)
 # rsync
 # copy with progress bar
 alias cpv='rsync -ah --info=progress2'
+

@@ -42,6 +42,8 @@ call plug#end()
 
 let mapleader=","
 
+" Section: fzf_vim
+" it is set to use ripgrep (use RG command)
 
 " Section: ALE configuration
 let g:ale_linters={

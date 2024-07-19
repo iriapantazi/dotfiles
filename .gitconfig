@@ -1,6 +1,6 @@
 [alias]
   st = status
-  ci = commit -m
+  cm = commit -m
   br = branch
   co = checkout
   df = diff --color-words --ignore-space-at-eol -b -w --ignore-blank-lines
