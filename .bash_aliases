@@ -27,7 +27,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # diff
 alias diff="diff --color -y"
 sidediff () {
-diff --color -y <(fold -s -w 20 $1) <(fold -s -w 20 $2)
+diff --color -y <(fold -s -w ${3:-20} $1) <(fold -s -w ${3:-20} $2)
 }
 
 # rsync
