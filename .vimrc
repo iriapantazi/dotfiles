@@ -5,7 +5,8 @@ colorscheme default
 set mouse=a
 set autoread
 
-set clipboard+=unnamed  " use the clipboards of vim and win
+" set clipboard+=unnamed  " use the clipboards of vim and win
+set clipboard=unnamedplus  " use the clipboards of vim and win
 set go+=a               " Visual selection automatically copied to the clipboard
 
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespaces on save
