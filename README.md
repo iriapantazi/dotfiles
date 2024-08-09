@@ -10,6 +10,7 @@ Still a WIP, as I haven't tested on other machines yet, and haven't finished doc
 
 ### prerequisites
 - vim >= 9.0 for copilot
+- ripgrep (sudo apt-get install ripgrep)
 
 
 ### configuration files for current version
@@ -32,6 +33,11 @@ use symlinks to link the files to the home directory
 
 ```bash
 ln -s /path/to/dotfiles/.vimrc ~/.vimrc
+```
+or run the script to install all the files
+
+```bash
+./install.sh
 ```
 
 #### Manual installation of dependencies
