@@ -106,6 +106,7 @@ let g:airline_left_sep='>'
 " Section: Markdown Preview
 " MarkdownPreview https://github.com/iamcco/markdown-preview.nvim
 let g:mkdp_auto_close = 0
+let g:mkdp_auto_start = 0
 let g:mkdp_command_for_global = 1
 let g:mkdp_open_to_the_world = 0
 let g:mkdp_echo_preview_url = 1
