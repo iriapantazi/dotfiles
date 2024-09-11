@@ -32,8 +32,6 @@ sidediff () {
 diff --color -y <(fold -s -w ${3:-20} $1) <(fold -s -w ${3:-20} $2)
 }
 # wn
-wnv () {
+nv () {
 watch -n ${1:-1} nvidia-smi
 }
-
-
