@@ -8,6 +8,7 @@ alias vim="vim -p"
 alias lr="ls -ltr"
 alias l="ls -l"
 alias ll="ls -la"
+alias ld="ls -ld */"
 
 # tmux
 alias tmux="tmux -2"
