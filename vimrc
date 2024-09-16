@@ -2,6 +2,10 @@
 set nocompatible
 colorscheme default
 
+" both required for vimwiki
+filetype plugin on
+syntax on
+
 set mouse=a
 set autoread
 
@@ -63,6 +67,11 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 0
 let g:ale_hover_cursor = 1
 
+" Section: vimwiki
+" vimwiki settings
+filetype plugin on
+syntax on
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Section: NERDTree
 nnoremap <leader>f :NERDTreeToggle<CR>

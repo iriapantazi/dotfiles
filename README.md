@@ -70,15 +70,22 @@ export PS1="\u@\h \[\033[01;32m\]\w\[\033[01;91m\]\$(parse_git_branch)\[\033[01;
 
 ### vim editor packages &
 
-### compile w/ xclip support
+#### compile w/ xclip support
+
+#### language server (ALE)
+- python linters:
+  - pylint
+  - pyright
+  - pylsp
+- follow pre-commit hooks for feedling w/ spaces, etc
 
 #### vim plug
 
 #### vim fugitive
 
 #### vimwiki
-
-#### language server (ALE)
+- diary
+- default id markdown
+- create vim wiki-list
 
 #### spell checker
-
