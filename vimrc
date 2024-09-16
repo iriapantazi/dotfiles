@@ -57,8 +57,9 @@ let g:ale_linters={
   \}
 let g:ale_fixers={
   \ '*': ['remove_trailing_lines', 'trim_whitespace',],
-  \ 'python': ['isort', 'black', 'autopep8', 'ruff', 'pycln', 'yapf'],
+  \ 'python': ['isort', 'ruff'],
   \}
+"  \ 'python': ['isort', 'black', 'autopep8', 'ruff', 'pycln', 'yapf'],
 " run black command for isort
 let g:ale_python_isort_options = '--profile black -l 92'
 let g:ale_python_pylsp_options = '--max-line-length=92'
