@@ -70,6 +70,7 @@ let g:ale_python_pylsp_options = '--max-line-length=92'
 " will change things automatically
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+let g:ale_virtualtext_cursor = 'current'
 let g:ale_hover_cursor = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
