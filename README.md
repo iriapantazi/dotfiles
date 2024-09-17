@@ -72,13 +72,20 @@ export PS1="\u@\h \[\033[01;32m\]\w\[\033[01;91m\]\$(parse_git_branch)\[\033[01;
 
 #### compile w/ xclip support
 
-#### language server (ALE)
-- python linters:
-  - pylint
-  - pyright
-  - pylsp
-- follow pre-commit hooks for feedling w/ spaces, etc
-
+#### language servers configured w/  ALE
+- python
+  - linters/fixers:
+    - pylint
+    - pyright
+    - pylsp
+  - TODO follow pre-commit hooks for spaces, etc
+- markdown (vale) for syntax and style checking
+- TODO configure & add vocabulary
+- disabled for now
+```bash
+# in virtual environment
+pip install vale
+```
 #### vim plug
 
 #### vim fugitive
