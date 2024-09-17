@@ -52,16 +52,20 @@ let mapleader=","
 
 " Section: ALE configuration
 let g:ale_linters={
-  \ 'python': ['pylsp', 'pylint', 'pyright'],
-  \ 'markdown': ['languagetool'],
+  \ 'python': ['pylint',],
   \}
 let g:ale_fixers={
   \ '*': ['remove_trailing_lines', 'trim_whitespace',],
   \ 'python': ['isort', 'ruff'],
   \}
-"  \ 'python': ['isort', 'black', 'autopep8', 'ruff', 'pycln', 'yapf'],
+" python linters
+" 'pylsp', 'pylint', 'pyright'
+" also available in python ['isort', 'black', 'autopep8', 'ruff', 'pycln', 'yapf']
+" disable vale until learn to configure vocabulary
+"   \ 'markdown': ['vale'],
 " run black command for isort
 let g:ale_python_isort_options = '--profile black -l 92'
+let g:ale_python_pylint_options = '--max-line-length=92'
 let g:ale_python_pylsp_options = '--max-line-length=92'
 " will change things automatically
 let g:ale_fix_on_save = 1
