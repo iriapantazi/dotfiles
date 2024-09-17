@@ -29,7 +29,7 @@ Still a WIP, as I haven't tested on other machines yet, and haven't finished doc
 
 ### installation
 
-use symlinks to link the files to the home directory
+Use symlinks to link the files to the home directory
 
 ```bash
 ln -s /path/to/dotfiles/.vimrc ~/.vimrc
@@ -87,6 +87,19 @@ export PS1="\u@\h \[\033[01;32m\]\w\[\033[01;91m\]\$(parse_git_branch)\[\033[01;
 pip install vale
 ```
 #### vim plug
+see [here](https://github.com/junegunn/vim-plug)
+```bash
+# install
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+```vim
+PlugInstall
+PlugUpgrade
+PlugUpdate
+PlugClean
+```
 
 #### vim fugitive
 
