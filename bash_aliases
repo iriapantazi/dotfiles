@@ -34,3 +34,7 @@ diff --color -y <(fold -s -w ${3:-20} $1) <(fold -s -w ${3:-20} $2)
 nv () {
 watch -n ${1:-1} nvidia-smi
 }
+# psa
+psa () {
+ps aux | grep $1
+}
