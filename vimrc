@@ -52,7 +52,7 @@ let mapleader=","
 
 " Section: ALE configuration
 let g:ale_linters={
-  \ 'python': ['pylint',],
+  \ 'python': ['pyright',],
   \}
 let g:ale_fixers={
   \ '*': ['remove_trailing_lines', 'trim_whitespace',],
