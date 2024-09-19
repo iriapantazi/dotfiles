@@ -24,6 +24,7 @@ Still a WIP, as I haven't tested on other machines yet, and haven't finished doc
 - [ ] xclip
 - [ ] versioning
 - [ ] env
+- [ ] cscope
 - [ ] zsh (?)
 
 

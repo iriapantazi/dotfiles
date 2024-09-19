@@ -5,6 +5,14 @@ alias greppy="grep -nrI --include=\*.py"
 alias cl="clear"
 alias cp="cp -iv"
 alias vim="vim -p"
+alias mv="mv -iv"
+alias rm="rm -iv"
+alias mkdir="mkdir -pv"
+alias h="history"
+alias j="jobs -l"
+alias df="df -h"
+alias du="du -h"
+alias wl="wc -l"
 
 # ls
 alias l='ls -l'

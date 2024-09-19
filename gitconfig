@@ -1,12 +1,15 @@
 [alias]
+  aa = add --all
   br = branch
   co = checkout
   cb = checkout -b
   cm = commit -m
   cl = clean -i
   df = diff --color-words --ignore-space-at-eol -b -w --ignore-blank-lines
-  lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(red)%h%C(reset) - %C(blue)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all -n 10v
+  lg = log --graph --oneline
   st = status
+  ps = push
+  pl = pull
 [core]
   editor = vim
 [user]
