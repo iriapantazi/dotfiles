@@ -13,8 +13,8 @@
 [core]
   editor = vim
 [user]
-  name = iriapantazi
-  email = iria.a.pantazi@gmail.com
+  name = a_name
+  email = an_email@gmail.com
 [credential]
   helper = store
 [filter "lfs"]

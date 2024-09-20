@@ -20,7 +20,10 @@ if [ -z "$name" ]; then
     echo "Input name is empty, skipping linking .gitconfig ..."
 else
     # replace name in gitconfig
-    sed -i "s/a_name/$name/g" gitconfig
-    sed -i "s/an_email/$email/g" gitconfig
-    ln -s -i ${PWD}/gitconfig ~/.gitconfig
+    echo name is $name
+    echo email is $email
+    cp gitconfig my_gitconfig
+    sed -i "s/a_name/$name/g" my_gitconfig
+    sed -i "s/an_email/$email/g" my_gitconfig
+    ln -s -i ${PWD}/my_gitconfig ~/.gitconfig
 fi
