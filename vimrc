@@ -28,19 +28,18 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'github/copilot.vim'
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
-" Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 "
-Plug 'https://github.com/qpkorr/vim-bufkill.git'
-Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/bkad/CamelCaseMotion.git'
-Plug 'https://github.com/tmhedberg/matchit.git'
-Plug 'https://github.com/majutsushi/tagbar.git'
-Plug 'https://github.com/morhetz/gruvbox.git'
+" Plug 'https://github.com/tpope/vim-commentary.git'
+" Plug 'https://github.com/qpkorr/vim-bufkill.git'
+" Plug 'https://github.com/tpope/vim-surround.git'
+" Plug 'https://github.com/bkad/CamelCaseMotion.git'
+" Plug 'https://github.com/tmhedberg/matchit.git'
+" Plug 'https://github.com/majutsushi/tagbar.git'
+" Plug 'https://github.com/morhetz/gruvbox.git'
 " Plug 'https://github.com/airblade/vim-gitgutter.git'
 call plug#end()
 
@@ -134,10 +133,6 @@ let g:mkdp_open_ip = '127.0.0.1'
 let g:mkdp_theme = 'dark'
 
 
-" Section: DogGenerate
-" DogGenerate: https://github.com/kkoomen/vim-doge
-" let g:doge_doc_standard_python = 'numpy'
-
 
 " Section: copilot
 let g:copilot#enable_mappings = 0
@@ -154,14 +149,6 @@ let g:copilot_no_tab_map = v:true
 " accept 1 word of current suggestion
 imap <C-L> <Plug>(copilot-accept-word)
 imap <C-K> <Plug>(copilot-next)
-
-
-" Section: Commentary
-" gcc to (un)comment a line
-" gc to (un)comment a block of code in visual mode
-" add support for more languages
-autocmd FileType haskell setlocal commentstring=--\ %s
-autocmd FileType python setlocal commentstring=#%s
 
 "
 set encoding=utf-8
@@ -313,28 +300,25 @@ au BufRead,BufNewFile *.mustache set filetype=htmldjango
 au BufRead,BufNewFile *.sbt set filetype=scala
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" tagbar plugin
-nnoremap <silent> <F9> :TagbarToggle<CR>
-let g:tagbar_vertical = 10
+" " tagbar plugin
+" nnoremap <silent> <F9> :TagbarToggle<CR>
+" let g:tagbar_vertical = 10
 
-" CamelCaseMotion plugin
-call camelcasemotion#CreateMotionMappings(',')
+" " Section: CamelCaseMotion plugin
+" call camelcasemotion#CreateMotionMappings(',')
 
 
 " C-s to save in insert mode
 inoremap <C-s> <esc>:w<CR>gi
 
-" Buffer switching w/ <leader>
+" Section: Buffer switching w/ <leader>
 map <leader>n :bnext<cr>
 map <leader>m :bprevious<cr>
 map <leader>d :bdelete<cr>
 map <leader>l :buffers<cr>
 
 
-" set spell
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Section: set spell
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 let g:lexical#spelllang = ['en_gb']
