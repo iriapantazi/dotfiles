@@ -13,7 +13,8 @@ ln -s -i ${PWD}/vimrc ~/.vimrc
 ln -s -i ${PWD}/bash_aliases ~/.bash_aliases
 ln -s -i ${PWD}/tmux.conf ~/.tmux.conf
 
-
+ln -s -i ${PWD}/fish_aliases ~/.config/fish/config.fish
+ln -s -i ${PWD}/fish_functions ~/.config/fish/functions.fish
 
 # if input is empty, then skip
 if [ -z "$name" ]; then

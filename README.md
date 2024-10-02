@@ -25,7 +25,8 @@ Still a WIP, as I haven't tested on other machines yet, and haven't finished doc
 - [ ] versioning
 - [ ] env
 - [ ] cscope
-- [ ] zsh (?)
+- [ ] ~zsh~
+- [ ] fsih
 
 
 ### installation
