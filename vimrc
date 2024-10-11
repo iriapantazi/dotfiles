@@ -52,10 +52,12 @@ let mapleader=","
 " Section: ALE configuration
 let g:ale_linters={
   \ 'python': ['pyright',],
+  \ 'markdown': ['mdl',],
   \}
 let g:ale_fixers={
   \ '*': ['remove_trailing_lines', 'trim_whitespace',],
-  \ 'python': ['isort', 'ruff', 'add_blank_lines_for_python_control_statements'],
+  \ 'python': ['isort', 'ruff'],
+  \ 'markdown': ['prettier'],
   \}
 " python linters
 " 'pylsp', 'pylint', 'pyright'

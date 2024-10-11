@@ -23,10 +23,13 @@ Still a WIP, as I haven't tested on other machines yet, and haven't finished doc
 - [ ] vim-plug
 - [ ] xclip
 - [ ] versioning
-- [ ] env
+- [ ] environment variables
 - [ ] cscope
 - [ ] ~zsh~
-- [ ] fsih
+- [ ] fish
+  - [ ] fisher
+  - [ ] fisher & tmux
+
 
 
 ### installation
