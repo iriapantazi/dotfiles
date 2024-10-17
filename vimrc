@@ -70,6 +70,8 @@ let g:ale_sign_info = 'ℹ'
 filetype plugin on
 syntax on
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+" let g:vimwiki-option-rx_todo = '\C\<\%(TODO\|DONE\|STARTED\|FIXME\|FIXED\|XXX\)\>'
 
 " Section: NERDTree
 nnoremap <leader>f :NERDTreeToggle<CR>
