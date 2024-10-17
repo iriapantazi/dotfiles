@@ -11,6 +11,7 @@ Still a WIP, as I haven't tested on other machines yet, and haven't finished doc
 ### prerequisites
 - vim >= 9.0 for copilot
 - ripgrep (sudo apt-get install ripgrep)
+- reference manual: [https://vimhelp.org/](https://vimhelp.org/)
 
 
 ### configuration files for current version
