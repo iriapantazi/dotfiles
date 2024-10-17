@@ -117,11 +117,12 @@ let g:ctrlp_open_new_file = 't' " open file in new tab
 " Section: Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
-let g:airline_stl_path_style = 'short'
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " skip utf-8[unix] in encoding
+" let g:airline_stl_path_style = 'short' " short path
+let g:airline_section_z = '%p%% line: %l/%L col: %c'
+let g:airline#extensions#fugitiveline#enabled = 1 " show git branch tagbar b
 let g:airline_left_sep='>'
-" let g:airline_detect_spell=1
+let g:airline_detect_spell=1
 
 " Section: Markdown Preview
 " MarkdownPreview https://github.com/iamcco/markdown-preview.nvim
