@@ -43,18 +43,21 @@ let mapleader=","
 
 " Section: ALE configuration
 let g:ale_linters={
-  \ 'python': ['pyright',],
+  \ 'python': ['pyright'],
   \ 'markdown': ['mdl',],
   \}
 let g:ale_fixers={
   \ '*': ['remove_trailing_lines', 'trim_whitespace',],
-  \ 'python': ['isort', 'ruff'],
+  \ 'python': ['isort', 'black'],
   \ 'markdown': ['prettier'],
   \}
 " run black command for isort
-let g:ale_python_isort_options = '--profile black -l 92'
-let g:ale_python_pylint_options = '--max-line-length=92'
-let g:ale_python_pylsp_options = '--max-line-length=92'
+let g:ale_python_isort_auto_pipenv = 1
+let g:ale_python_isort_options = '--profile=black --project=caiman_asr_train --project=myrtle_asr_train'
+" let g:ale_python_flake8_options = '--extend-ignore=E203,F401,F722'
+" let g:ale_python_isort_options = '--profile black -l 100'
+" let g:ale_python_pylint_options = '--max-line-length=92'
+" let g:ale_python_pylsp_options = '--max-line-length=92'
 " will change things automatically
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
