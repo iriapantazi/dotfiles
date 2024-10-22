@@ -32,6 +32,11 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'github/copilot.vim'
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
+" Plug 'godlygeek/tabular'
+" Plug 'preservim/vim-markdown'
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'npm install --frozen-lockfile --production',
+"   \ 'for': ['markdown'] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
@@ -44,7 +49,6 @@ let mapleader=","
 " Section: ALE configuration
 let g:ale_linters={
   \ 'python': ['pyright'],
-  \ 'markdown': ['mdl',],
   \}
 let g:ale_fixers={
   \ '*': ['remove_trailing_lines', 'trim_whitespace',],
@@ -60,6 +64,8 @@ let g:ale_python_isort_options = '--profile=black --project=caiman_asr_train --p
 " let g:ale_python_isort_options = '--profile black -l 100'
 " let g:ale_python_pylint_options = '--max-line-length=92'
 " let g:ale_python_pylsp_options = '--max-line-length=92'
+" markdown
+let g:ale_markdown_prettier_options = '--single-quote --trailing-comma all'
 " will change things automatically
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1

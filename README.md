@@ -78,20 +78,16 @@ export PS1="\u@\h \[\033[01;32m\]\w\[\033[01;91m\]\$(parse_git_branch)\[\033[01;
 
 #### compile w/ xclip support
 
-#### language servers configured w/  ALE
-- python
-  - linters/fixers:
-    - pylint
-    - pyright
-    - pylsp
-  - TODO follow pre-commit hooks for spaces, etc
-- markdown (vale) for syntax and style checking
-- TODO configure & add vocabulary
-- disabled for now
-```bash
-# in virtual environment
-pip install vale
-```
+#### language servers w/  ALE
+- python linter
+  - pyright
+- python fixers
+    - isort
+    - black
+- markdown fixer
+  - prettier
+    - `npm install prettier`
+
 #### vim plug
 see [here](https://github.com/junegunn/vim-plug)
 ```bash
@@ -101,6 +97,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 
 ```vim
+# unseful commands
 PlugInstall
 PlugUpgrade
 PlugUpdate
@@ -115,3 +112,4 @@ PlugClean
 - create vim wiki-list
 
 #### spell checker
+- TODO keep dictionary in .vim/spell
