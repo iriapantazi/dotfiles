@@ -53,8 +53,9 @@ let g:ale_fixers={
   \}
 " run black command for isort
 let g:ale_python_pyright_auto_pipenv = 1
+let g:ale_python_pyright_executable = 'pyright-langserver'
 let g:ale_python_isort_auto_pipenv = 1
-let g:ale_python_isort_options = '--profile=black --project=caiman_asr_train --project=myrtle_asr_train'
+let g:ale_python_isort_options = '--profile=black --project=caiman_asr_train --project=myrtle_asr_train --project=myrtle_data'
 " let g:ale_python_flake8_options = '--extend-ignore=E203,F401,F722'
 " let g:ale_python_isort_options = '--profile black -l 100'
 " let g:ale_python_pylint_options = '--max-line-length=92'
