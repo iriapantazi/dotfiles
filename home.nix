@@ -28,13 +28,7 @@
     pkgs.ripgrep
     pkgs.tmux
     pkgs.vim
-    # pkgs.neovim
-    # pkgs.zsh
-    # pkgs.fd
-    # pkgs.bash
-    # pkgs.bash-it
-    # pkgs.bash-it.completion
-    # pkgs.bash-it.plugins
+    pkgs.silver-searcher
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
