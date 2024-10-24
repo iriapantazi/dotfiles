@@ -31,12 +31,9 @@ Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'github/copilot.vim'
 Plug 'dense-analysis/ale'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vimwiki/vimwiki'
-" Plug 'godlygeek/tabular'
-" Plug 'preservim/vim-markdown'
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'npm install --frozen-lockfile --production',
-"   \ 'for': ['markdown'] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
@@ -45,6 +42,13 @@ let mapleader=","
 
 " Section: fzf_vim
 " it is set to use ripgrep (use RG command)
+" use Ag silversearch to fuzzy search within folder files
+
+" Section: Pandoc
+let g:pandoc#filetypes#handled = ['markdown','pandoc']
+let g:pandoc#folding#fdc = 1
+" let g:pandoc#syntax#conceal#urls = 0
+" let g:pandoc#modules#disabled = ["folding"]
 
 " Section: ALE configuration
 let g:ale_linters={
@@ -82,7 +86,17 @@ filetype plugin on
 syntax on
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
-" let g:vimwiki-option-rx_todo = '\C\<\%(TODO\|DONE\|STARTED\|FIXME\|FIXED\|XXX\)\>'
+
+" nothing of these works:
+" hi VimwikiBold term=bold ctermfg=Cyan guifg=#80a0ff gui=bold
+" hi VimwikiItalic term=italic ctermfg=Red guifg=#cc0000 gui=italic
+" hi VimwikiHeader1 ctermfg=Red guifg=#cc0000 gui=italic  " guibg=NONE gui=bold
+" hi VimwikiCode term=bold ctermfg=Cyan guifg=#80a0ff gui=bold
+" hi VimwikiHeader2 guifg=#00FF00 " guibg=NONE gui=bold
+" hi VimwikiHeader3 guifg=#0000FF " guibg=NONE gui=bold
+" hi VimwikiHeader4 guifg=#FF0000 " guibg=NONE gui=bold
+" hi VimwikiHeader5 guifg=#FFFF00 " guibg=NONE gui=bold
+" hi VimwikiHeader6 guifg=#FF00FF " guibg=NONE gui=bold
 
 " Section: NERDTree
 nnoremap <leader>f :NERDTreeToggle<CR>
