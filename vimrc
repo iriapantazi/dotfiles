@@ -1,4 +1,3 @@
-" reference manual: https://vimhelp.org/
 " to override vim's initializations
 set nocompatible
 colorscheme default
@@ -41,7 +40,8 @@ call plug#end()
 let mapleader=","
 
 " Section: fzf_vim
-" it is set to use ripgrep (use RG command)
+nnoremap <leader>P :Files<CR>
+nnoremap <leader>B :Buffers<CR>
 " use Ag silversearch to fuzzy search within folder files
 
 " Section: Pandoc
@@ -70,6 +70,7 @@ let g:ale_python_isort_options = '--profile=black --project=caiman_asr_train --p
 " let g:ale_python_pylsp_options = '--max-line-length=92'
 " markdown
 let g:ale_markdown_prettier_options = '--single-quote --trailing-comma all'
+let g:ale_python_flake8_options = '--extend-ignore=E203,F401,F722'
 " will change things automatically
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -82,8 +83,6 @@ let g:ale_sign_info = 'ℹ'
 
 " Section: vimwiki
 " vimwiki settings
-filetype plugin on
-syntax on
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
 
@@ -99,16 +98,13 @@ let g:vimwiki_global_ext = 0
 " hi VimwikiHeader6 guifg=#FF00FF " guibg=NONE gui=bold
 
 " Section: NERDTree
-nnoremap <leader>f :NERDTreeToggle<CR>
-" map <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>g :NERDTreeFocus<CR>
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p> " to refresh NERDTree
 let NERDChristmasTree = 1
 let NERDTreeHighlightCursorline = 1
 " let NERDTreeShowHidden = 1
 let NERDTreeIgnore=['\.git','\.DS_Store','\.pdf', '.beam']
-nnoremap <leader>P :Files<CR>
-nnoremap <leader>B :Buffers<CR>
 
 
 " Section: CtrlP
@@ -124,6 +120,7 @@ let g:ctrlp_open_new_file = 't' " open file in new tab
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " skip utf-8[unix] in encoding
+let g:airline_section_c = '%F'
 let g:airline_section_z = '%p%% line: %l/%L col: %c'
 let g:airline#extensions#fugitiveline#enabled = 1 " show git branch tagbar b
 let g:airline_left_sep='>'
