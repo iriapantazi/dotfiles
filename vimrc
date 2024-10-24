@@ -30,9 +30,8 @@ Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'github/copilot.vim'
 Plug 'dense-analysis/ale'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vimwiki/vimwiki'
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
@@ -44,11 +43,13 @@ nnoremap <leader>P :Files<CR>
 nnoremap <leader>B :Buffers<CR>
 " use Ag silversearch to fuzzy search within folder files
 
+
 " Section: Pandoc
-let g:pandoc#filetypes#handled = ['markdown','pandoc']
-let g:pandoc#folding#fdc = 1
+" let g:pandoc#filetypes#handled = ['markdown','pandoc']
+" let g:pandoc#folding#fdc = 1
 " let g:pandoc#syntax#conceal#urls = 0
 " let g:pandoc#modules#disabled = ["folding"]
+
 
 " Section: ALE configuration
 let g:ale_linters={
@@ -60,6 +61,7 @@ let g:ale_fixers={
   \ 'markdown': ['prettier'],
   \}
 " run black command for isort
+let g:ale_linters_explicit = 1
 let g:ale_python_pyright_auto_pipenv = 1
 let g:ale_python_pyright_executable = 'pyright-langserver'
 let g:ale_python_isort_auto_pipenv = 1
@@ -83,10 +85,13 @@ let g:ale_sign_info = 'ℹ'
 
 " Section: vimwiki
 " vimwiki settings
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_filetypes = ['markdown']
+let g:vimwiki_conceallevel = 0
 let g:vimwiki_global_ext = 0
 
 " nothing of these works:
+" hi def link VimwikiCode Search
 " hi VimwikiBold term=bold ctermfg=Cyan guifg=#80a0ff gui=bold
 " hi VimwikiItalic term=italic ctermfg=Red guifg=#cc0000 gui=italic
 " hi VimwikiHeader1 ctermfg=Red guifg=#cc0000 gui=italic  " guibg=NONE gui=bold
@@ -254,7 +259,7 @@ inoremap <C-u> <esc>bgU`^gi
 set complete=.
 
 " Make folds easier to see
-set foldcolumn=1
+" set foldcolumn=1
 
 
 filetype plugin indent off
