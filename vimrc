@@ -43,14 +43,6 @@ nnoremap <leader>P :Files<CR>
 nnoremap <leader>B :Buffers<CR>
 " use Ag silversearch to fuzzy search within folder files
 
-
-" Section: Pandoc
-" let g:pandoc#filetypes#handled = ['markdown','pandoc']
-" let g:pandoc#folding#fdc = 1
-" let g:pandoc#syntax#conceal#urls = 0
-" let g:pandoc#modules#disabled = ["folding"]
-
-
 " Section: ALE configuration
 let g:ale_linters={
   \ 'python': ['pyright', 'flake8'],

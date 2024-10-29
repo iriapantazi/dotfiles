@@ -28,3 +28,6 @@ else
     sed -i "s/an_email/$email/g" my_gitconfig
     ln -s -i ${PWD}/my_gitconfig ~/.gitconfig
 fi
+
+# if Nix is installed
+ln -s -i  ${PWD}/home.nix ~/.config/home-manager/home.nix
