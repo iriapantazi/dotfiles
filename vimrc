@@ -86,21 +86,29 @@ let g:ale_sign_info = 'ℹ'
 " Section: vimwiki
 " vimwiki settings
 " let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md', 'auto_toc': 0, 'auto_tags': 1}]
 let g:vimwiki_filetypes = ['markdown']
-let g:vimwiki_conceallevel = 0
-let g:vimwiki_global_ext = 0
+let g:vimwiki_hl_headers = 1 " diff header colours
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_conceallevel = 2 " default, to conceal urls
+let g:vimwiki_table_auto_fmt = 1 " default, to format tables
+let g:vimwiki_folding = 'syntax' " options: 'expr' 'syntax' 'indent'
+let g:vimwiki_rx_todo = '\C\<\%(TODO\|DONE\|STARTED\|FIXME\|FIXED\|XXX\)\>'
+" Vimwiki mappings
+" nmap <leader>ww <Plug>VimwikiIndex
+" nmap <leader>wt <Plug>VimwikiTabIndex
+" nmap <leader>wd <Plug>VimwikiDiaryIndex
+" nmap <leader>ws <Plug>VimwikiUISelect
+" nmap <leader>w<CR> <Plug>VimwikiFollowLink
 
-" nothing of these works:
-" hi def link VimwikiCode Search
-" hi VimwikiBold term=bold ctermfg=Cyan guifg=#80a0ff gui=bold
-" hi VimwikiItalic term=italic ctermfg=Red guifg=#cc0000 gui=italic
-" hi VimwikiHeader1 ctermfg=Red guifg=#cc0000 gui=italic  " guibg=NONE gui=bold
-" hi VimwikiCode term=bold ctermfg=Cyan guifg=#80a0ff gui=bold
-" hi VimwikiHeader2 guifg=#00FF00 " guibg=NONE gui=bold
-" hi VimwikiHeader3 guifg=#0000FF " guibg=NONE gui=bold
-" hi VimwikiHeader4 guifg=#FF0000 " guibg=NONE gui=bold
-" hi VimwikiHeader5 guifg=#FFFF00 " guibg=NONE gui=bold
-" hi VimwikiHeader6 guifg=#FF00FF " guibg=NONE gui=bold
+
+" vimwiki headers colors:
+hi VimwikiHeader1 cterm=bold ctermfg=blue
+hi VimwikiHeader2 cterm=bold ctermfg=magenta
+hi VimwikiHeader3 cterm=bold ctermfg=yellow
+hi VimwikiHeader4 cterm=bold ctermfg=lightmagenta
+hi VimwikiHeader5 cterm=bold ctermfg=green
+hi VimwikiHeader6 cterm=bold ctermfg=cyan
 
 " Section: NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
