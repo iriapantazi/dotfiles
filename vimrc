@@ -31,7 +31,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'github/copilot.vim'
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
-Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
@@ -53,7 +53,7 @@ nnoremap <leader>B :Buffers<CR>
 
 " Section: ALE configuration
 let g:ale_linters={
-  \ 'python': ['pyright'],
+  \ 'python': ['pyright', 'flake8'],
   \}
 let g:ale_fixers={
   \ '*': ['remove_trailing_lines', 'trim_whitespace',],
@@ -62,17 +62,19 @@ let g:ale_fixers={
   \}
 " run black command for isort
 let g:ale_linters_explicit = 1
+let g:ale_python_auto_pipenv = 1
 let g:ale_python_pyright_auto_pipenv = 1
 let g:ale_python_pyright_executable = 'pyright-langserver'
 let g:ale_python_isort_auto_pipenv = 1
 let g:ale_python_isort_options = '--profile=black --project=caiman_asr_train --project=myrtle_asr_train --project=myrtle_data'
-" let g:ale_python_flake8_options = '--extend-ignore=E203,F401,F722'
+let g:ale_python_flake8_auto_pipenv = 1
+let g:ale_python_flake8_options = '--extend-ignore=E203,F401,F722 --max-line-length=92 caiman-asr-dev/' " --project=caiman_asr_train --project=myrtle_asr_train --project=myrtle_data'
+let g:ale_python_black_auto_pipenv = 1
 " let g:ale_python_isort_options = '--profile black -l 100'
 " let g:ale_python_pylint_options = '--max-line-length=92'
 " let g:ale_python_pylsp_options = '--max-line-length=92'
 " markdown
 let g:ale_markdown_prettier_options = '--single-quote --trailing-comma all'
-let g:ale_python_flake8_options = '--extend-ignore=E203,F401,F722'
 " will change things automatically
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -86,13 +88,13 @@ let g:ale_sign_info = 'ℹ'
 " Section: vimwiki
 " vimwiki settings
 " let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md', 'auto_toc': 0, 'auto_tags': 1}]
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md', 'auto_toc': 1, 'auto_tags': 1}]
 let g:vimwiki_filetypes = ['markdown']
 let g:vimwiki_hl_headers = 1 " diff header colours
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_conceallevel = 2 " default, to conceal urls
 let g:vimwiki_table_auto_fmt = 1 " default, to format tables
-let g:vimwiki_folding = 'syntax' " options: 'expr' 'syntax' 'indent'
+let g:vimwiki_folding = '' " options: 'syntax' 'expr' 'syntax' 'indent'
 let g:vimwiki_rx_todo = '\C\<\%(TODO\|DONE\|STARTED\|FIXME\|FIXED\|XXX\)\>'
 " Vimwiki mappings
 " nmap <leader>ww <Plug>VimwikiIndex
@@ -130,6 +132,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_open_new_file = 't' " open file in new tab
 
 " Section: Airline
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " skip utf-8[unix] in encoding
