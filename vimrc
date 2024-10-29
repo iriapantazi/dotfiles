@@ -91,11 +91,16 @@ let g:ale_sign_info = 'ℹ'
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md', 'auto_toc': 1, 'auto_tags': 1}]
 let g:vimwiki_filetypes = ['markdown']
 let g:vimwiki_hl_headers = 1 " diff header colours
+let g:vimwiki_listing_hl = 1
+" let g:vimwiki_listing_hl_command = ''
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_conceallevel = 2 " default, to conceal urls
 let g:vimwiki_table_auto_fmt = 1 " default, to format tables
 let g:vimwiki_folding = '' " options: 'syntax' 'expr' 'syntax' 'indent'
 let g:vimwiki_rx_todo = '\C\<\%(TODO\|DONE\|STARTED\|FIXME\|FIXED\|XXX\)\>'
+let g:vimwiki_auto_tags = 1
+let g:vimwiki_auto_toc = 1
+let g:wiki_nested_syntaxes = {'python': 'python', 'sh': 'sh', 'bash': 'sh'}
 " Vimwiki mappings
 " nmap <leader>ww <Plug>VimwikiIndex
 " nmap <leader>wt <Plug>VimwikiTabIndex
@@ -290,6 +295,8 @@ autocmd FileType gitcommit setlocal nomodeline
 
 " read python docstrings
 autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3.10
+" autocmd Filetype vimwiki set ft=markdown syntax=markdown
+" autocmd BufWinEnter *.md set syntax=markdown
 
 au BufRead,BufNewFile *.mustache set filetype=htmldjango
 au BufRead,BufNewFile *.sbt set filetype=scala
