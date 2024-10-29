@@ -277,6 +277,8 @@ au FileType 8o setl noet sw=4 ts=4 sts=4
 autocmd FileType gitrebase setlocal nomodeline
 autocmd FileType gitcommit setlocal nomodeline
 
+" read python docstrings
+autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3.10
 
 au BufRead,BufNewFile *.mustache set filetype=htmldjango
 au BufRead,BufNewFile *.sbt set filetype=scala
