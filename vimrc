@@ -114,7 +114,7 @@ syntax match VimwikiKeywordTODO /\<TODO\>/
 highlight VimwikiKeywordTODO cterm=bold ctermfg=Red
 
 syntax match VimwikiKeywordDONE /\<DONE\>/
-highlight VimwikiKeywordDONE cterm=bold ctermfg=Green
+highlight VimwikiKeywordDONE cterm=bold ctermfg=DarkGreen
 
 syntax match VimwikiKeywordWAITING /\<WAITING\>/
 highlight VimwikiKeywordWAITING cterm=bold ctermfg=Yellow
