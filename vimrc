@@ -89,7 +89,7 @@ let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_conceallevel = 2 " default, to conceal urls
 let g:vimwiki_table_auto_fmt = 1 " default, to format tables
 let g:vimwiki_folding = '' " options: 'syntax' 'expr' 'syntax' 'indent'
-let g:vimwiki_rx_todo = '\C\<\%(TODO\|DONE\|STARTED\|FIXME\|FIXED\|XXX\)\>'
+" let g:vimwiki_rx_todo = '\C\<\%(TODO\|DONE\|STARTED\|FIXME\|FIXED\|XXX\)\>'
 let g:vimwiki_auto_tags = 1
 let g:vimwiki_auto_toc = 1
 let g:wiki_nested_syntaxes = {'python': 'python', 'sh': 'sh', 'bash': 'sh'}
@@ -104,10 +104,26 @@ let g:wiki_nested_syntaxes = {'python': 'python', 'sh': 'sh', 'bash': 'sh'}
 " vimwiki headers colors:
 hi VimwikiHeader1 cterm=bold ctermfg=blue
 hi VimwikiHeader2 cterm=bold ctermfg=magenta
-hi VimwikiHeader3 cterm=bold ctermfg=yellow
-hi VimwikiHeader4 cterm=bold ctermfg=lightmagenta
-hi VimwikiHeader5 cterm=bold ctermfg=green
-hi VimwikiHeader6 cterm=bold ctermfg=cyan
+hi VimwikiHeader3 cterm=bold ctermfg=cyan
+hi VimwikiHeader4 cterm=bold ctermfg=lightred
+hi VimwikiHeader5 cterm=bold ctermfg=lightgreen
+hi VimwikiHeader6 cterm=bold ctermfg=brown
+
+" Unique highlighting for TODO and DONE keywords in Vimwiki
+syntax match VimwikiKeywordTODO /\<TODO\>/
+highlight VimwikiKeywordTODO cterm=bold ctermfg=Red
+
+syntax match VimwikiKeywordDONE /\<DONE\>/
+highlight VimwikiKeywordDONE cterm=bold ctermfg=Green
+
+syntax match VimwikiKeywordWAITING /\<WAITING\>/
+highlight VimwikiKeywordWAITING cterm=bold ctermfg=Yellow
+
+syntax match VimwikiKeywordINPROGRESS /\<INPROGRESS\>/
+highlight VimwikiKeywordINPROGRESS cterm=bold ctermfg=Blue
+
+syntax match VimwikiKeywordFIXED /\<FIXED\>/
+highlight VimwikiKeywordFIXED cterm=bold ctermfg=DarkCyan
 
 " Section: NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
