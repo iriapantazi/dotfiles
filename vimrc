@@ -80,6 +80,7 @@ let g:ale_sign_info = 'ℹ'
 " Section: vimwiki
 " vimwiki settings
 " let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_syntax = 'markdown'
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md', 'auto_toc': 1, 'auto_tags': 1}]
 let g:vimwiki_filetypes = ['markdown']
 let g:vimwiki_hl_headers = 1 " diff header colours
@@ -124,6 +125,22 @@ highlight VimwikiKeywordINPROGRESS cterm=bold ctermfg=Blue
 
 syntax match VimwikiKeywordFIXED /\<FIXED\>/
 highlight VimwikiKeywordFIXED cterm=bold ctermfg=DarkCyan
+
+
+" Set up fenced code block syntax highlighting for common languages in Vimwiki
+augroup VimwikiCodeBlockHighlight
+  autocmd!
+  autocmd Syntax vimwiki syntax include @markdown syntax/markdown.vim
+  autocmd FileType vimwiki syntax region vimwikiCode start=/```bash/ end=/```/ keepend
+  autocmd FileType vimwiki syntax region vimwikiCode start=/```python/ end=/```/ keepend
+augroup END
+
+
+" Custom highlight for table headers in markdown
+highlight MarkdownTableHeader guifg=#FFA500 guibg=#2E2E2E ctermfg=214 ctermbg=235
+
+" Match the first row in tables (assuming headers are defined there)
+syntax match MarkdownTableHeader /|.*|/ containedin=markdownTable,markdownCodeBlock keepend
 
 " Section: NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
