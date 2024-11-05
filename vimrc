@@ -11,7 +11,9 @@ set autoread
 
 " set clipboard+=unnamed  " use the clipboards of vim and win
 set clipboard=unnamedplus  " use the clipboards of vim and win
-set go+=a               " Visual selection automatically copied to the clipboard
+set go+=a " Visual selection automatically copied to the clipboard
+
+let mapleader=","
 
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespaces on save
 
@@ -30,18 +32,21 @@ Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'github/copilot.vim'
 Plug 'dense-analysis/ale'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'vimwiki/vimwiki'
-" Plug 'vim-pandoc/vim-pandoc'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 
-let mapleader=","
 
 " Section: fzf_vim
 nnoremap <leader>P :Files<CR>
 nnoremap <leader>B :Buffers<CR>
 " use Ag silversearch to fuzzy search within folder files
+nnoremap <leader>g :Ag<CR>
+" make RG fold for narrow pages
+let g:rg_command = 'rg --vimgrep --no-heading --smart-case'
+nnoremap <leader>r :Rg<CR>
 
 " Section: ALE configuration
 let g:ale_linters={
@@ -52,29 +57,72 @@ let g:ale_fixers={
   \ 'python': ['isort', 'black'],
   \ 'markdown': ['prettier'],
   \}
-" run black command for isort
 let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1 " will change things automatically
+let g:ale_completion_enabled = 0  " Disable ALE completion to avoid conflicts
+let g:ale_hover_cursor = 0 " use hover from vim-lsp
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_pyright_auto_pipenv = 1
 let g:ale_python_pyright_executable = 'pyright-langserver'
 let g:ale_python_isort_auto_pipenv = 1
 let g:ale_python_isort_options = '--profile=black --project=caiman_asr_train --project=myrtle_asr_train --project=myrtle_data'
 let g:ale_python_flake8_auto_pipenv = 1
-let g:ale_python_flake8_options = '--extend-ignore=E203,F401,F722 --max-line-length=92 caiman-asr-dev/' " --project=caiman_asr_train --project=myrtle_asr_train --project=myrtle_data'
+let g:ale_python_flake8_options = '--extend-ignore=E203,F401,F722 --max-line-length=92 caiman-asr-dev/'
 let g:ale_python_black_auto_pipenv = 1
-" let g:ale_python_isort_options = '--profile black -l 100'
-" let g:ale_python_pylint_options = '--max-line-length=92'
-" let g:ale_python_pylsp_options = '--max-line-length=92'
-" markdown
 let g:ale_markdown_prettier_options = '--single-quote --trailing-comma all'
-" will change things automatically
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_virtualtext_cursor = 'current'
-let g:ale_hover_cursor = 1
+let g:ale_virtualtext_cursor = 0 " 'current'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_info = 'ℹ'
+" nnoremap <silent> gd :ALEGoToDefinition<CR>
+
+" Section: vim-lsp
+" Configure vim-lsp to use pyright as the LSP for Python
+if executable('pyright-langserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyright',
+        \ 'cmd': ['pyright-langserver', '--stdio'],
+        \ 'whitelist': ['python'],
+        \ 'initialization_options': {
+        \     'python': {
+        \         'analysis': {
+        \             'typeCheckingMode': 'basic',
+        \             'reportUnboundVariable': 'none'
+        \         }
+        \     }
+        \ }
+        \ })
+endif
+
+" let g:vim_lsp_settings = {
+"     \ 'pyright': {
+"     \     'settings': {
+"     \         'python': {
+"     \             'analysis': {
+"     \                 'typeCheckingMode': 'basic',
+"     \                 'reportUnboundVariable': 'none',
+"     \             }
+"     \         }
+"     \     }
+"     \ }
+" }
+
+" can make <leader>gd instead.
+nnoremap <silent> K :LspHover<CR>
+nnoremap <silent> gd :LspDefinition<CR>
+nnoremap <silent> gr :LspReferences<CR>
+let g:lsp_diagnostics_virtual_text_enabled = 1 " Disable virtual text
+let g:lsp_diagnostics_echo_cursor = 1  " Show diagnostics in the command area when cursor is on an error
+" virtual text position
+let g:lsp_diagnostics_virtual_text_position = 'right'
+" let g:lsp_diagnostics_float_cursor = 0 " Disable floating windows for diagnostics
+" show diagnostics in virtual text (right side of the line)
+" let g:lsp_diagnostics_virtual_text = 1
+" let g:lsp_diagnostics_virtual_text_prefix = ''
+" let g:lsp_diagnostics_virtual_text_highlight = 'LspDiagnosticsVirtualTextError'
+" let g:lsp_diagnostics_virtual_text_highlight = 'LspDiagnosticsVirtualTextWarning'
+" let g:lsp_diagnostics_virtual_text_highlight = 'LspDiagnosticsVirtualTextInformation'
+" let g:lsp_diagnostics_virtual_text_highlight = 'LspDiagnosticsVirtualTextHint'
 
 
 " Section: vimwiki
@@ -126,13 +174,35 @@ highlight VimwikiKeywordINPROGRESS cterm=bold ctermfg=Blue
 syntax match VimwikiKeywordFIXED /\<FIXED\>/
 highlight VimwikiKeywordFIXED cterm=bold ctermfg=DarkCyan
 
+syntax match VimwikiKeywordXXX /\<XXX\>/
+highlight VimwikiKeywordXXX cterm=bold ctermfg=DarkYellow
+
+syntax match VimwikiKeywordNB /\<NB\>/
+highlight VimwikiKeywordNB cterm=bold ctermfg=DarkYellow
+
+syntax match VimwikiKeywordOK /\<OK\>/
+highlight VimwikiKeywordOK cterm=bold ctermfg=DarkGreen ctermbg=black
+
+syntax match VimwikiKeywordRESULT /\<RESULT:\>/
+highlight VimwikiKeywordRESULT cterm=bold ctermfg=DarkCyan ctermbg=black
+
+" single and triple code background colours
+highlight VimwikiCode ctermbg=black ctermfg=magenta
+highlight VimwikiCodeBlockBackground cterm=bold ctermbg=25 guibg=#2E2E2E
 
 " Set up fenced code block syntax highlighting for common languages in Vimwiki
 augroup VimwikiCodeBlockHighlight
   autocmd!
+  autocmd FileType vimwiki highlight link vimwikiCode VimwikiCode
   autocmd Syntax vimwiki syntax include @markdown syntax/markdown.vim
   autocmd FileType vimwiki syntax region vimwikiCode start=/```bash/ end=/```/ keepend
   autocmd FileType vimwiki syntax region vimwikiCode start=/```python/ end=/```/ keepend
+  autocmd FileType vimwiki syntax region vimwikiCode start=/```markdown/ end=/```/ keepend
+  " Apply custom background color to code blocks
+  autocmd FileType vimwiki highlight link vimwikiCode VimwikiCode
+  "
+  " autocmd FileType vimwiki syntax region VimwikiCodeBlock matchgroup=VimwikiCodeBlockBackground start=/```/ end=/```/ keepend
+  " autocmd FileType vimwiki highlight link VimwikiCodeBlock VimwikiCodeBlockBackground
 augroup END
 
 
@@ -145,11 +215,12 @@ syntax match MarkdownTableHeader /|.*|/ containedin=markdownTable,markdownCodeBl
 " Section: NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>g :NERDTreeFocus<CR>
-nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p> " to refresh NERDTree
+" nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p> " to refresh NERDTree
 let NERDChristmasTree = 1
 let NERDTreeHighlightCursorline = 1
 " let NERDTreeShowHidden = 1
 let NERDTreeIgnore=['\.git','\.DS_Store','\.pdf', '.beam']
+
 
 
 " Section: CtrlP
@@ -171,6 +242,13 @@ let g:airline_section_z = '%p%% line: %l/%L col: %c'
 let g:airline#extensions#fugitiveline#enabled = 1 " show git branch tagbar b
 let g:airline_left_sep='>'
 let g:airline_detect_spell=1
+" in vim airline choose buffer with mouse
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:airline#extensions#tabline#fnamemod = ':t'  " Show only filename in tabline
+" let g:airline#extensions#tabline#show_buffers = 1
+" let g:airline#extensions#tabline#show_tab_count = 1
+" let g:airline#extensions#tabline#show_tab_type = 1
+" let g:airline#extensions#tabline#show_tab_size = 1
 
 " Section: Markdown Preview
 let g:mkdp_auto_close = 0
@@ -281,9 +359,9 @@ nnoremap <F1> :ls<CR>
 " Disable swap file creation
 set noswapfile
 
-" Alternative scrolling (move the cursor and the viewport)
-nnoremap J <C-e>j
-nnoremap K <C-y>k
+" " Alternative scrolling (move the cursor and the viewport)
+" nnoremap J <C-e>j
+" nnoremap K <C-y>k " conflicting w/ vim-lsp
 
 " Scroll around in insert mode
 inoremap <C-e> <C-x><C-e>
