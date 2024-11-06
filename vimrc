@@ -94,18 +94,6 @@ if executable('pyright-langserver')
         \ })
 endif
 
-" let g:vim_lsp_settings = {
-"     \ 'pyright': {
-"     \     'settings': {
-"     \         'python': {
-"     \             'analysis': {
-"     \                 'typeCheckingMode': 'basic',
-"     \                 'reportUnboundVariable': 'none',
-"     \             }
-"     \         }
-"     \     }
-"     \ }
-" }
 
 " can make <leader>gd instead.
 nnoremap <silent> K :LspHover<CR>
@@ -116,14 +104,6 @@ let g:lsp_diagnostics_echo_cursor = 1  " Show diagnostics in the command area wh
 " virtual text position
 let g:lsp_diagnostics_virtual_text_position = 'right'
 " let g:lsp_diagnostics_float_cursor = 0 " Disable floating windows for diagnostics
-" show diagnostics in virtual text (right side of the line)
-" let g:lsp_diagnostics_virtual_text = 1
-" let g:lsp_diagnostics_virtual_text_prefix = ''
-" let g:lsp_diagnostics_virtual_text_highlight = 'LspDiagnosticsVirtualTextError'
-" let g:lsp_diagnostics_virtual_text_highlight = 'LspDiagnosticsVirtualTextWarning'
-" let g:lsp_diagnostics_virtual_text_highlight = 'LspDiagnosticsVirtualTextInformation'
-" let g:lsp_diagnostics_virtual_text_highlight = 'LspDiagnosticsVirtualTextHint'
-
 
 " Section: vimwiki
 " vimwiki settings
@@ -185,6 +165,10 @@ highlight VimwikiKeywordOK cterm=bold ctermfg=DarkGreen ctermbg=black
 
 syntax match VimwikiKeywordRESULT /\<RESULT:\>/
 highlight VimwikiKeywordRESULT cterm=bold ctermfg=DarkCyan ctermbg=black
+
+syntax match VimwikiKeywordINOTES /\<NOTES\>/
+highlight VimwikiKeywordINOTES cterm=bold ctermfg=Blue
+
 
 " single and triple code background colours
 highlight VimwikiCode ctermbg=black ctermfg=magenta
