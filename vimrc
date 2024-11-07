@@ -26,6 +26,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'vim-airline/vim-airline'
+Plug 'LnL7/vim-nix'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim.git'
