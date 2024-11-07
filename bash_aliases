@@ -30,10 +30,13 @@ alias tl="tmux ls"
 alias tn="tmux new -s"
 alias tkill="tmux kill-session -t"
 
-# nix
+# nix & home-manager
 nixplugins () {
 nix-env -f '<nixpkgs>' -qaP -A ${1}Plugins
 }
+alias hmb="home-manager build"
+alias hms="home-manager switch"
+
 # my aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias diff="diff --color -y"
