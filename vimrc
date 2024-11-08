@@ -158,6 +158,9 @@ highlight VimwikiKeywordFIXED cterm=bold ctermfg=DarkCyan
 syntax match VimwikiKeywordXXX /\<XXX\>/
 highlight VimwikiKeywordXXX cterm=bold ctermfg=DarkYellow
 
+syntax match VimwikiKeywordNOT /\<NOT\>/
+highlight VimwikiKeywordNOT cterm=underline,bold ctermfg=Red
+
 syntax match VimwikiKeywordNB /\<NB\>/
 highlight VimwikiKeywordNB cterm=bold ctermfg=DarkYellow
 
