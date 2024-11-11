@@ -3,14 +3,6 @@
 let
   # Define Vim using the default Vim configuration
   customVim = pkgs.vimHugeX;
-
-  # plugins in the ~/.vimrc
-  # # Specify Vim plugins to add
-  # vimPlugins = [
-  #   pkgs.vimPlugins.vim-nix       # Nix syntax highlighting
-  #   pkgs.vimPlugins.vim-airline   # Vim status/tabline
-  #   pkgs.vimPlugins.gruvbox       # Popular color scheme
-  # ];
 in
 {
   # Home Manager options
