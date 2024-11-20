@@ -8,6 +8,134 @@ syntax on
 
 set mouse=a
 set autoread
+"
+set encoding=utf-8
+set backspace=2 " make backspace work like most other programs
+
+" Number lines
+set number relativenumber
+set ruler
+
+" when opening new buffer, (??)
+set hidden
+
+" Bracket matching
+set showmatch
+set matchtime=5
+
+" Indent by 2 spaces (no tabs) by default
+set expandtab
+set softtabstop=2
+set shiftwidth=2
+set autoindent
+
+" Copy/paste to system clipboard
+vnoremap <C-c> "*y
+vnoremap <C-x> "*d
+vnoremap <C-v> "*p
+
+" Search settings
+set hlsearch
+set incsearch
+set ignorecase
+set fileignorecase
+set foldopen-=search " Don't open folds when searching
+hi Search cterm=NONE ctermfg=DarkMagenta ctermbg=LightYellow
+
+" Search settings
+set wildmenu
+set wildmode=longest:full,full
+set wildignorecase " requireds to set ignorecase to fully work
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*.class,*.pyc,*/node_modules/*,*.o
+set showcmd
+
+" Allow some space either side (vertically) of the cursor when scrolling
+set scrolloff=2
+
+" title NB it'll be overwritten by in tmux
+set title
+set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
+" Always show the status line
+set laststatus=2
+set statusline=%F\
+
+
+nnoremap <PageUp> gT
+nnoremap <PageDown> gt
+
+" Sensible split directions
+set splitbelow
+set splitright
+
+" Make Y behave like C and D
+nnoremap Y y$
+
+" S to join (free J up)
+nnoremap S J
+
+" % is awkward
+nnoremap <Tab> %
+onoremap <Tab> %
+vnoremap <Tab> %
+
+" Backspace to go to the first character of the line above
+nnoremap <BS> -
+
+" Nice invisibles
+set listchars=tab:▸\ ,eol:¬
+
+" F1 for buffer list
+nnoremap <F1> :ls<CR>
+
+" Disable swap file creation
+set noswapfile
+
+" " Alternative scrolling (move the cursor and the viewport)
+" nnoremap J <C-e>j
+" nnoremap K <C-y>k " conflicting w/ vim-lsp
+
+" Scroll around in insert mode
+inoremap <C-e> <C-x><C-e>
+inoremap <C-y> <C-x><C-y>
+
+" Default K is annoying
+vnoremap K <Nop>
+
+" Capitalize the word you've just typed
+inoremap <C-u> <esc>bgU`^gi
+
+
+" Autocomplete (only search current buffer)
+set complete=.
+
+" Make folds easier to see
+" set foldcolumn=1
+
+
+filetype plugin indent off
+" Tabs and spaces
+au FileType c setl et sw=4 sts=4
+au FileType cpp setl et sw=2 sts=2
+au FileType make setl noet sw=4 ts=4 sts=4
+au FileType java setl et sw=4 sts=4
+au FileType python setl et sw=4 sts=4 commentstring=#%s
+au FileType rust setl et sw=4 sts=4
+au FileType asm setl noet ts=4
+au FileType 8o setl noet sw=4 ts=4 sts=4
+
+" Don't interpret "vim: ..." commit messages as modelines
+autocmd FileType gitrebase setlocal nomodeline
+autocmd FileType gitcommit setlocal nomodeline
+
+" read python docstrings
+autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3.10
+" autocmd Filetype vimwiki set ft=markdown syntax=markdown
+" autocmd BufWinEnter *.md set syntax=markdown
+
+au BufRead,BufNewFile *.mustache set filetype=htmldjango
+au BufRead,BufNewFile *.sbt set filetype=scala
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " set clipboard+=unnamed  " use the clipboards of vim and win
 set clipboard=unnamedplus  " use the clipboards of vim and win
@@ -140,38 +268,6 @@ hi VimwikiHeader5 cterm=bold ctermfg=lightgreen
 hi VimwikiHeader6 cterm=bold ctermfg=brown
 
 " Unique highlighting for TODO and DONE keywords in Vimwiki
-syntax match VimwikiKeywordTODO /\<TODO\>/
-highlight VimwikiKeywordTODO cterm=bold ctermfg=Red
-
-syntax match VimwikiKeywordDONE /\<DONE\>/
-highlight VimwikiKeywordDONE cterm=bold ctermfg=DarkGreen
-
-syntax match VimwikiKeywordWAITING /\<WAITING\>/
-highlight VimwikiKeywordWAITING cterm=bold ctermfg=Yellow
-
-syntax match VimwikiKeywordINPROGRESS /\<INPROGRESS\>/
-highlight VimwikiKeywordINPROGRESS cterm=bold ctermfg=Blue
-
-syntax match VimwikiKeywordFIXED /\<FIXED\>/
-highlight VimwikiKeywordFIXED cterm=bold ctermfg=DarkCyan
-
-syntax match VimwikiKeywordXXX /\<XXX\>/
-highlight VimwikiKeywordXXX cterm=bold ctermfg=DarkYellow
-
-syntax match VimwikiKeywordNOT /\<NOT\>/
-highlight VimwikiKeywordNOT cterm=underline,bold ctermfg=Red
-
-syntax match VimwikiKeywordNB /\<NB\>/
-highlight VimwikiKeywordNB cterm=bold ctermfg=DarkYellow
-
-syntax match VimwikiKeywordOK /\<OK\>/
-highlight VimwikiKeywordOK cterm=bold ctermfg=DarkGreen ctermbg=black
-
-syntax match VimwikiKeywordRESULT /\<RESULT:\>/
-highlight VimwikiKeywordRESULT cterm=bold ctermfg=DarkCyan ctermbg=black
-
-syntax match VimwikiKeywordINOTES /\<NOTES\>/
-highlight VimwikiKeywordINOTES cterm=bold ctermfg=Blue
 
 
 " single and triple code background colours
@@ -264,134 +360,6 @@ let g:copilot_no_tab_map = v:true
 imap <C-L> <Plug>(copilot-accept-word)
 imap <C-K> <Plug>(copilot-next)
 
-"
-set encoding=utf-8
-set backspace=2 " make backspace work like most other programs
-
-" Number lines
-set number relativenumber
-set ruler
-
-" when opening new buffer, (??)
-set hidden
-
-" Bracket matching
-set showmatch
-set matchtime=5
-
-" Indent by 2 spaces (no tabs) by default
-set expandtab
-set softtabstop=2
-set shiftwidth=2
-set autoindent
-
-" Copy/paste to system clipboard
-vnoremap <C-c> "*y
-vnoremap <C-x> "*d
-vnoremap <C-v> "*p
-
-" Search settings
-set hlsearch
-set incsearch
-set ignorecase
-set fileignorecase
-set foldopen-=search " Don't open folds when searching
-hi Search cterm=NONE ctermfg=DarkMagenta ctermbg=LightYellow
-
-" Search settings
-set wildmenu
-set wildmode=longest:full,full
-set wildignorecase " requireds to set ignorecase to fully work
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set wildignore+=*.class,*.pyc,*/node_modules/*,*.o
-set showcmd
-
-" Allow some space either side (vertically) of the cursor when scrolling
-set scrolloff=2
-
-" title NB it'll be overwritten by in tmux
-set title
-set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
-" Always show the status line
-set laststatus=2
-set statusline=%F\
-
-
-nnoremap <PageUp> gT
-nnoremap <PageDown> gt
-
-" Sensible split directions
-set splitbelow
-set splitright
-
-" Make Y behave like C and D
-nnoremap Y y$
-
-" S to join (free J up)
-nnoremap S J
-
-" % is awkward
-nnoremap <Tab> %
-onoremap <Tab> %
-vnoremap <Tab> %
-
-" Backspace to go to the first character of the line above
-nnoremap <BS> -
-
-" Nice invisibles
-set listchars=tab:▸\ ,eol:¬
-
-" F1 for buffer list
-nnoremap <F1> :ls<CR>
-
-" Disable swap file creation
-set noswapfile
-
-" " Alternative scrolling (move the cursor and the viewport)
-" nnoremap J <C-e>j
-" nnoremap K <C-y>k " conflicting w/ vim-lsp
-
-" Scroll around in insert mode
-inoremap <C-e> <C-x><C-e>
-inoremap <C-y> <C-x><C-y>
-
-" Default K is annoying
-vnoremap K <Nop>
-
-" Capitalize the word you've just typed
-inoremap <C-u> <esc>bgU`^gi
-
-
-" Autocomplete (only search current buffer)
-set complete=.
-
-" Make folds easier to see
-" set foldcolumn=1
-
-
-filetype plugin indent off
-" Tabs and spaces
-au FileType c setl et sw=4 sts=4
-au FileType cpp setl et sw=2 sts=2
-au FileType make setl noet sw=4 ts=4 sts=4
-au FileType java setl et sw=4 sts=4
-au FileType python setl et sw=4 sts=4 commentstring=#%s
-au FileType rust setl et sw=4 sts=4
-au FileType asm setl noet ts=4
-au FileType 8o setl noet sw=4 ts=4 sts=4
-
-" Don't interpret "vim: ..." commit messages as modelines
-autocmd FileType gitrebase setlocal nomodeline
-autocmd FileType gitcommit setlocal nomodeline
-
-" read python docstrings
-autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3.10
-" autocmd Filetype vimwiki set ft=markdown syntax=markdown
-" autocmd BufWinEnter *.md set syntax=markdown
-
-au BufRead,BufNewFile *.mustache set filetype=htmldjango
-au BufRead,BufNewFile *.sbt set filetype=scala
-au BufRead,BufNewFile *.md set filetype=markdown
 
 " C-s to save in insert mode
 inoremap <C-s> <esc>:w<CR>gi
@@ -409,3 +377,43 @@ map <leader>ss :setlocal spell!<cr>
 let g:lexical#spelllang = ['en_gb']
 hi clear SpellBad
 hi SpellBad cterm=underline,bold ctermfg=DarkGray ctermbg=yellow
+
+augroup VimwikiCustomSyntax
+    autocmd!
+    autocmd FileType vimwiki syntax match VimwikiKeywordTODO /\<TODO\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordTODO cterm=bold ctermfg=Red
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordTODO /\<TODO\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordTODO cterm=bold ctermfg=Red
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordDONE /\<DONE\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordDONE cterm=bold ctermfg=DarkGreen
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordWAITING /\<WAITING\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordWAITING cterm=bold ctermfg=Yellow
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordINPROGRESS /\<INPROGRESS\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordINPROGRESS cterm=bold ctermfg=Blue
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordFIXED /\<FIXED\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordFIXED cterm=bold ctermfg=DarkCyan
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordXXX /\<XXX\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordXXX cterm=bold ctermfg=DarkYellow
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordNOT /\<NOT\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordNOT cterm=underline,bold ctermfg=Red
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordNB /\<NB\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordNB cterm=bold ctermfg=DarkYellow
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordOK /\<OK\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordOK cterm=bold ctermfg=DarkGreen ctermbg=black
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordRESULT /\<RESULT:\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordRESULT cterm=bold ctermfg=DarkCyan ctermbg=black
+
+    autocmd FileType vimwiki syntax match VimwikiKeywordINOTES /\<NOTES\>/
+    autocmd FileType vimwiki highlight VimwikiKeywordINOTES cterm=bold ctermfg=Blue
+
+augroup END
